@@ -1,7 +1,7 @@
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, flash, redirect , render_template, request, jsonify, url_for
-from models import Products, User, setup_db, rollback, checkout, carts, order
+from models import Products, User, setup_db, rollback, checkout, carts, order, db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import (
     LoginManager,
@@ -24,8 +24,6 @@ def create_app(test_config=None):
     app = Flask(__name__)
     setup_db(app)
     CORS (app)
-    db = SQLAlchemy(app)
-
 
 ######################### Auth ###############################################
     login_manager = LoginManager()
