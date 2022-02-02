@@ -10,7 +10,6 @@ from flask_login import (
     logout_user,
     current_user
 )
-import pdfkit
 from datetime import datetime
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
@@ -23,7 +22,10 @@ from werkzeug.utils import secure_filename
 def create_app(test_config=None):
     app = Flask(__name__)
     setup_db(app)
-    CORS (app)
+    CORS(app)
+    # db = SQLAlchemy(app). setup.sh
+
+
 
 ######################### Auth ###############################################
     login_manager = LoginManager()
