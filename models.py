@@ -10,7 +10,7 @@ db = SQLAlchemy()
 
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = "postgresql://postgres:zaidwawi056@localhost:5432/data"
     app.config["SECRET_KEY"] = "#$%kekslonf@!3A"
     db.app = app
     db.init_app(app)
@@ -29,8 +29,8 @@ class User(db.Model, UserMixin):
     address = Column(String())
     phone_number = Column(String())
     phone_whats_number = Column(String())
-    is_Admin = Column(Boolean(), default=False)
-    status = Column(Boolean(), default=False)  # if buy = True to filter
+    is_Admin = Column(Boolean, default=False)
+    status = Column(Boolean, default=False)  # if buy = True to filter
     checkout = db.relationship("checkout")
     carts = db.relationship("carts")
     order = db.relationship("order")
